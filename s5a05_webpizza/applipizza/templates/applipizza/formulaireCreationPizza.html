@@ -1,0 +1,23 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+creation d'une pizza
+{% endblock %}
+
+{% block main %}
+<h2>Creation d'une pizza</h2>
+<form enctype="multipart/form-data" action="/pizzas/create/" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_nomPizza" class="form-label">Le nom de cette pizza</label>
+        <input type="text" name="nomPizza" class="form-control" max_length="50" required id="id_nomPizza">
+        <label for="prix" class="form-label">Le prix de cette pizza</label>
+        <input type="text" name="prix" class="form-control" max_length="50" required id="prix">
+    </div>
+    <div class="mb-3">
+        <label for="id_image" class="form-label">Fichier image</label>
+        <input class="form-control" name="image" type="file" accept="image/*" id="id_image">
+    </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+</form>
+{% endblock %}

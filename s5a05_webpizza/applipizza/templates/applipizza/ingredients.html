@@ -1,0 +1,46 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+les ingredients
+{% endblock %}
+
+{% block main %}
+<h2>Voici nos {{ingredients|length}} ingredients</h2>
+<!-- Commentaire : Liste des ingrédients 
+<ul>
+    {% for ing in ingredients %}
+    <li>{{ing}}| 
+        <a href="/ingredients/{{ing.idIngredient}}/update/"> modifier</a>
+        <a href="/ingredients/{{ing.idIngredient}}/delete/"> supprimer</a>
+
+    </li>
+    {% endfor %}
+</ul>
+-->
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Ingredient</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ing in ingredients %}
+        <tr>
+            <td>{{ing}}</td>
+            <td>
+                <a href="/ingredients/{{ ing.idIngredient }}/update/" class="btn btn-warning btn-sm">
+                    <i class="fas fa-pencil-alt"></i> Modifier
+                </a>
+                <a href="/ingredients/{{ ing.idIngredient }}/delete/" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Supprimer
+                </a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+      
+    </tbody>
+  </table>
+
+{% endblock %}

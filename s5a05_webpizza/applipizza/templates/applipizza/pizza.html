@@ -1,0 +1,63 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+details d'une pizza
+{% endblock %}
+
+{% block main %}
+<h2>Voici notre pizza</h2>
+<p>{{pizza}}</p>
+
+{% if ingredients|length > 0 %}
+<h2>Voici les {{ingredients|length}} de la pizza {{pizza.nomPizza}}</h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Ingredient</th>
+        <th>Quantite</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ing in ingredients %}
+        <tr>
+            <td>{{ing.ingredient}}</td>
+            <td>{{ing.quantite}}</td>
+            <td><a class="btn btn-primary" href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ing.idComposition}}/" role="button">Supprimer</a></td>
+            
+        </tr>
+        {% endfor %}
+      
+    </tbody>
+  </table>
+{% else %}
+  <h3>La pizza {{pizza.nomPizza}} n'a pas encore d'ingrédients</h3>
+{% endif %}
+
+
+<h2>ajouter un ingrédient</h2>
+<form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post"> 
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="id_ingredient" class="form-label">ingrédient </label>
+    <select name="ingredient" class="form-select" required id="id_ingredient"> 
+        <option selected disabled>Choisissez l'ingrédient à ajouter</option>
+        {% for ings in lesIng %}
+        <option value="{{ings.idIngredient}}">{{ings.nomIngredient}}</option>
+        {% endfor %}
+      
+      </select>
+    </div>
+
+    <div class="mb-3">
+
+      <label for="id_quantite" class="form-label">quantité </label> 
+      <input type="text" name="quantite" class="form-control" maxlength="100" required id="id_quantite">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+</form>
+
+{% endblock %}

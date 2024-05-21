@@ -1,0 +1,17 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+creation d'un ingredient
+{% endblock %}
+
+{% block main %}
+<h2>Creation d'un ingredient</h2>
+<form action="/ingredients/create/" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_nomIngredient" class="form-label">Le nom de cet ingredient</label>
+        <input type="text" name="nomIngredient" class="form-control" max_length="50" required id="id_nomIngredient">
+    </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+</form>
+{% endblock %}

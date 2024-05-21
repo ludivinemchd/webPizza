@@ -1,0 +1,28 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+les pizzas
+{% endblock %}
+
+{% block main %}
+    <h2>Voici nos {{ pizzas|length }} pizzas</h2>
+    <div class="pizza-container">
+        {% for piz in pizzas %}
+            <div class="pizza">
+                <div class="pizza-image">
+                    <a href="/pizzas/{{ piz.idPizza }}">
+                        <img src="{{ MEDIA_URL }}{{ piz.image }}" alt="image de pizza" title="{{ piz.nomPizza }}">
+                    </a>
+                </div>
+                <div class="pizza-details">
+                    {{ piz }}
+                </div>
+                <div class="pizza-actions">
+                    <a href="/pizzas/{{ piz.idPizza }}">Détails</a> |
+                    <a href="/pizzas/{{ piz.idPizza }}/update/">Modifier</a> |
+                    <a href="/pizzas/{{ piz.idPizza }}/delete/">Supprimer</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+h2 {
+    background-color: red;
+}
+
+body{
+    display :flex;
+    min-height: 100vh;
+    flex-direction: column;
+ 
+}
+main
+{
+    flex: 1;    
+}
+footer{
+    text-align: right;
+}
+.bg-primary {
+    background-color: green !important;
+}
+
+.btn-primary
+{
+    background-color: green !important;
+    border-color: green !important;
+}
+
+/* Ajoutez ces styles à votre fichier CSS */
+
+/* Style pour le conteneur de toutes les pizzas */
+.pizza-container {
+    text-align: center;
+}
+
+/* Style pour chaque pizza */
+.pizza {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+/* Style pour l'image de la pizza */
+.pizza-image img {
+    margin-top: 20px;
+    max-width: 200px; /* Ajustez la largeur maximale selon vos besoins */
+    height: auto;
+    border-radius: 10px; /* Ajoutez cette propriété pour des bordures arrondies */
+}
+
+
+.pizza-actions a:hover {
+    text-decoration: underline; /* Souligner le texte au survol */
+}
